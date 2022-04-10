@@ -24,7 +24,7 @@ public class ChessService {
         this.boardDao = pieceDao;
     }
 
-    public ChessGame load() {
+    private ChessGame load() {
         if (!boardDao.isExist()) {
             ChessGame chessGame = new ChessGame();
             boardDao.saveAllPieces(chessGame.getBoard());
