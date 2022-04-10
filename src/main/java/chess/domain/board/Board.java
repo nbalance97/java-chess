@@ -22,12 +22,11 @@ public class Board {
     private State state;
 
     public Board(Builder builder) {
-        this.board = new HashMap<>(builder.build());
-        this.state = new WhiteTurn();
+        this(builder, new WhiteTurn());
     }
 
-    public Board(Map<Position, Piece> pieces, State state) {
-        this.board = new HashMap<>(pieces);
+    public Board(Builder builder, State state) {
+        this.board = new HashMap<>(builder.build());
         this.state = state;
     }
 
@@ -98,7 +97,7 @@ public class Board {
     }
 
     public double calculateScore(Team team) {
-        ScoreCalculator calculator = ScoreCalculator.of();
+        ScoreCalculator calculator = ScoreCalculator.getInstance();
         if (team.isBlack()) {
             return calculator.calculateBlackScore(new HashMap<>(board));
         }
@@ -114,7 +113,7 @@ public class Board {
     }
 
     public Winner getCurrentWinner() {
-        ScoreCalculator calculator = ScoreCalculator.of();
+        ScoreCalculator calculator = ScoreCalculator.getInstance();
         return calculator.calculateWinner(new HashMap<>(board));
     }
 

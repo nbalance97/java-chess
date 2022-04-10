@@ -5,7 +5,6 @@ import chess.domain.Winner;
 import chess.domain.piece.Piece;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,7 +15,7 @@ public class ScoreCalculator {
     private ScoreCalculator() {
     }
 
-    public static ScoreCalculator of() {
+    public static ScoreCalculator getInstance() {
         return instance;
     }
 

@@ -32,7 +32,7 @@ public class ChessService {
         }
         Map<Position, Piece> pieceMap = boardDao.loadAllPieces();
         State state = chessGameDao.loadState();
-        return new ChessGame(new Board(pieceMap, state));
+        return new ChessGame(new Board(() -> pieceMap, state));
     }
 
     public boolean isReadyGame() {
